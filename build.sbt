@@ -47,21 +47,20 @@ lazy val root = project
   .aggregate(
     zioJsonUsageJVM,
     zioJsonUsageJS,
-    zioJsonUsageNative,
     docs
   )
 
-lazy val zioJsonUsage = crossProject(JSPlatform, JVMPlatform, NativePlatform)
+lazy val zioJsonUsage = crossProject(JSPlatform, JVMPlatform)
   .in(file("zio-json-usage"))
   .settings(stdSettings("zio-json-usage"))
   .settings(crossProjectSettings)
   .settings(buildInfoSettings("zio.json.usage"))
   .settings(
     libraryDependencies ++= Seq(
-      "dev.zio" %% "zio"          % Version.zio,
-      "dev.zio" %% "zio-json"     % Version.zioJson,
-      "dev.zio" %% "zio-test"     % Version.zio % Test,
-      "dev.zio" %% "zio-test-sbt" % Version.zio % Test
+      "dev.zio" %%% "zio"          % Version.zio,
+      "dev.zio" %%% "zio-json"     % Version.zioJson,
+      "dev.zio" %%% "zio-test"     % Version.zio % Test,
+      "dev.zio" %%% "zio-test-sbt" % Version.zio % Test
     )
   )
   .settings(testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework"))
@@ -76,9 +75,6 @@ lazy val zioJsonUsageJVM = zioJsonUsage.jvm
   .settings(dottySettings)
   .settings(libraryDependencies += "dev.zio" %%% "zio-test-sbt" % zioVersion % Test)
   .settings(scalaReflectTestSettings)
-
-lazy val zioJsonUsageNative = zioJsonUsage.native
-  .settings(nativeSettings)
 
 lazy val docs = project
   .in(file("zio-json-usage-docs"))
@@ -99,5 +95,5 @@ lazy val docs = project
 
 lazy val Version = new {
   val zio     = "1.0.12"
-  val zioJson = "0.2.0-M1"
+  val zioJson = "0.2.0-M2"
 }

@@ -1,7 +1,7 @@
 package zio.json.usage
 
 import zio.test._
-
+import zio.json._
 object InstructionSpec extends DefaultRunnableSpec {
   def spec = suite("Instruction Spec")(
     suite("Instruction")(
