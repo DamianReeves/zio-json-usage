@@ -13,6 +13,7 @@ object InstructionSpec extends DefaultRunnableSpec {
           Instruction.Pop
         )
         val json        = instruction.toJson
+        println(s"JSON: ${instruction.toJsonPretty}")
         assertTrue(json != "{}")
       }
     )
