@@ -56,6 +56,7 @@ lazy val zioJsonUsage = crossProject(JSPlatform, JVMPlatform)
   .settings(crossProjectSettings)
   .settings(buildInfoSettings("zio.json.usage"))
   .settings(
+    scalaVersion := ScalaDotty,
     libraryDependencies ++= Seq(
       "dev.zio" %%% "zio"          % Version.zio,
       "dev.zio" %%% "zio-json"     % Version.zioJson,
